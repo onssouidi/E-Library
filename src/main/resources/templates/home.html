@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{home.title}">Home page</title>
+</head>
+<body>
+<h1 th:text="#{home.welcome}">Welcome</h1>
+
+<a th:href="@{/ELibrary/register}" th:text="#{home.register}">Register</a>
+<a th:href="@{/ELibrary/login}" th:text="#{home.login}">Login</a>
+
+<br><br>
+<a th:href="@{/(lang='en')}">English</a> |
+<a th:href="@{/(lang='fr')}">Français</a>
+</body>
+</html>

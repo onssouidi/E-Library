@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{text.cart}">Panier</title>
+</head>
+<body>
+<h1 th:text="#{text.YourCart}">Votre Panier</h1>
+<table>
+    <tr>
+        <th th:text="#{text.book}">Livre</th>
+        <th th:text="#{text.quantity}">Quantité</th>
+        <th th:text="#{text.price}">Prix</th>
+        <th th:text="#{text.total}">Total</th>
+    </tr>
+    <tr th:each="item : ${cart}">
+        <td th:text="${item.book.title}"></td>
+        <td th:text="${item.quantity}"></td>
+        <td th:text="${item.book.price} + ' €'"></td>
+        <td th:text="${item.getTotalPrice()} + ' €'"></td>
+    </tr>
+</table>
+
+<h3>Total: <span th:text="${total} + ' €'"></span></h3>
+<form th:action="@{/cart/checkout}" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <button type="submit" th:text="#{text.Validate}">Valider la commande</button>
+</form>
+<a href="/ELibrary/cart/clear" th:text="#{text.ClearCart}">Vider le panier</a>
+<a href="/ELibrary/books" th:text="#{text.ContinuePurchase}">Continuer vos achats</a>
+<form th:action="@{/logout}" method="post">
+    <button type="submit" th:text="#{button.logout}">Déconnexion</button>
+</form>
+<a href="?lang=en">English</a> |
+<a href="?lang=fr">Français</a>
+</body>
+</html>

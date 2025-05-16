@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Commande</title>
+</head>
+<body>
+<h2 th:text="${message}"></h2>
+<p th:if="${total != null}" th:text="#{order.TotalPayment}">Total payé : <span th:text="${total} + ' €'"></span></p>
+<a href="/ELibrary/books" th:text="#{order.Return}">Retour à la boutique</a>
+<form th:action="@{/logout}" method="post">
+    <button type="submit" th:text="#{button.logout}">Déconnexion</button>
+</form>
+<a href="?lang=en">English</a> |
+<a href="?lang=fr">Français</a>
+</body>
+</html>
