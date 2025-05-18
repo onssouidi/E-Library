@@ -20,7 +20,8 @@ public class SecurityConfig {
                         .frameOptions().disable()
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/login", "/register", "/resources/**").permitAll()
+                        .requestMatchers("/", "/login", "/register","/images/**",
+                                "/resources/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
