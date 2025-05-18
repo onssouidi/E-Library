@@ -3,15 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Commande</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<h2 th:text="${message}"></h2>
-<p th:if="${total != null}" th:text="#{order.TotalPayment}">Total payé : <span th:text="${total} + ' €'"></span></p>
-<a href="/ELibrary/books" th:text="#{order.Return}">Retour à la boutique</a>
-<form th:action="@{/logout}" method="post">
-    <button type="submit" th:text="#{button.logout}">Déconnexion</button>
-</form>
-<a href="?lang=en">English</a> |
-<a href="?lang=fr">Français</a>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+<!-- Header -->
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <!-- Logo + Titre -->
+        <div class="flex items-center space-x-2">
+            <img th:src="@{/images/download.png}" alt="Logo" class="h-12 w-auto" />
+        </div>
+
+        <!-- Langues + Déconnexion -->
+        <div class="flex items-center space-x-5">
+            <form th:action="@{/logout}" method="post">
+                <button type="submit"
+                        class="text-sm text-red-600 hover:underline font-medium"
+                        th:text="#{button.logout}">
+                    Déconnexion
+                </button>
+            </form>
+
+            <div class="text-sm text-gray-600 space-x-1">
+                <a href="?lang=fr" class="hover:underline">Français</a> |
+                <a href="?lang=en" class="hover:underline">English</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main -->
+<main class="max-w-xl mx-auto px-6 py-16 text-center bg-white mt-10 rounded-lg shadow">
+    <h2 class="text-2xl font-semibold text-green-600 mb-6" th:text="${message}">Votre commande a été passée avec succès !</h2>
+
+    <p th:if="${total != null}" class="text-lg text-gray-700 mb-8">
+        <span th:text="#{order.TotalPayment} + ': '">Total payé : </span>
+        <span th:text="${total} + ' €'" class="font-semibold text-blue-600"></span>
+    </p>
+
+    <a href="/ELibrary/books"
+       class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-6 py-2 rounded-md transition mb-6"
+       th:text="#{order.Return}">
+        Retour à la boutique
+    </a>
+</main>
+
 </body>
 </html>

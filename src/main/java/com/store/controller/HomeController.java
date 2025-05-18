@@ -11,6 +11,6 @@ public class HomeController {
     @GetMapping("/")
     public String homePage(Locale locale, Model model) {
         model.addAttribute("locale", locale);
-        return "welcome";
+        return "home";
     }
 }

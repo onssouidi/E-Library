@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div th:fragment="header">
+    <!-- Navbar -->
+    <nav class="navbar bg-blue-500 text-white p-4">
+        <div class="container mx-auto">
+            <a href="/" class="text-2xl font-semibold">E-Library</a>
+            <ul class="ml-auto flex space-x-4">
+                <li><a href="/home" class="text-white hover:underline">Home</a></li>
+                <li><a href="/books" class="text-white hover:underline">Books</a></li>
+                <li><a href="/cart" class="text-white hover:underline">Cart</a></li>
+                <li><a href="/login" class="text-white hover:underline">Login</a></li>
+                <li><a href="/register" class="text-white hover:underline">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>

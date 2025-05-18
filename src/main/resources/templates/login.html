@@ -6,22 +6,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<div class="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
+<div class="min-h-screen bg-gray-200 text-gray-900 flex justify-center">
 
     <div class="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
         <div class="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
-            <div>
-                <img th:src="@{images/download.jpg}" alt="Login image"
+            <div class="flex justify-center mb-6">
+                <img th:src="@{images/download.png}" alt="Login image"
                      class="mx-auto w-40" />
             </div>
 
-            <div class="mt-8 text-center">
-                <h2 class="text-2xl font-bold text-blue-600">Welcome to our Platform</h2>
-                <p class="text-sm text-blue-500">Please enter your credentials to log in.</p>
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Welcome to Our Platform</h2>
+                <p class="text-lg text-gray-600">Please enter your credentials to log in.</p>
             </div>
 
-            <div class=" flex flex-col items-center">
-                <div class="w-full flex-1 mt-8">
+            <div class="flex flex-col items-center">
+                <div class="w-full flex-1 mt-6">
 
                     <!-- Login form -->
                     <form th:action="@{/login}" method="post" class="mx-auto max-w-xs">
@@ -55,12 +55,19 @@
 
                     </form>
 
+                    <!-- Link to home page -->
+                    <p class="mt-6 text-sm text-center text-gray-600">
+                        <a href="/ELibrary" class="text-blue-600 font-semibold hover:underline hover:text-blue-800 transition duration-200">
+                            Return to Home Page
+                        </a>
+                    </p>
+
                 </div>
             </div>
         </div>
 
         <!-- Side image section -->
-        <div class="flex-1 bg-blue-100 text-center hidden lg:flex">
+        <div class="flex-1 bg-blue-200 text-center hidden lg:flex">
             <div class="m-12 xl:m-16 w-full">
                 <img th:src="@{/images/okk.png}" alt="Side image" class="w-full h-full object-cover" />
             </div>

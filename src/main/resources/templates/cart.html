@@ -1,37 +1,93 @@
+
 <!DOCTYPE html>
 <html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title th:text="#{text.cart}">Panier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<h1 th:text="#{text.YourCart}">Votre Panier</h1>
-<table>
-    <tr>
-        <th th:text="#{text.book}">Livre</th>
-        <th th:text="#{text.quantity}">Quantité</th>
-        <th th:text="#{text.price}">Prix</th>
-        <th th:text="#{text.total}">Total</th>
-    </tr>
-    <tr th:each="item : ${cart}">
-        <td th:text="${item.book.title}"></td>
-        <td th:text="${item.quantity}"></td>
-        <td th:text="${item.book.price} + ' €'"></td>
-        <td th:text="${item.getTotalPrice()} + ' €'"></td>
-    </tr>
-</table>
+<body class="bg-gray-100 text-gray-800 font-sans">
 
-<h3>Total: <span th:text="${total} + ' €'"></span></h3>
-<form th:action="@{/cart/checkout}" method="post">
-    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-    <button type="submit" th:text="#{text.Validate}">Valider la commande</button>
-</form>
-<a href="/ELibrary/cart/clear" th:text="#{text.ClearCart}">Vider le panier</a>
-<a href="/ELibrary/books" th:text="#{text.ContinuePurchase}">Continuer vos achats</a>
-<form th:action="@{/logout}" method="post">
-    <button type="submit" th:text="#{button.logout}">Déconnexion</button>
-</form>
-<a href="?lang=en">English</a> |
-<a href="?lang=fr">Français</a>
+<!-- Header -->
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+            <img th:src="@{/images/download.png}" alt="Logo" class="h-12 w-auto" />
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-center space-x-5">
+            <form th:action="@{/logout}" method="post">
+                <button type="submit"
+                        class="text-sm text-red-600 hover:underline font-medium"
+                        th:text="#{button.logout}">
+                    Déconnexion
+                </button>
+            </form>
+
+            <div class="text-sm text-gray-600 space-x-1">
+                <a href="?lang=fr" class="hover:underline">Français</a> |
+                <a href="?lang=en" class="hover:underline">English</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="max-w-5xl mx-auto px-6 py-10">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6" th:text="#{text.YourCart}">Votre Panier</h2>
+
+    <div class="overflow-x-auto shadow rounded-lg bg-white">
+        <table class="min-w-full divide-y divide-gray-200 text-sm">
+            <thead class="bg-gray-100 text-left">
+            <tr>
+                <th class="px-6 py-3 font-medium text-gray-700" th:text="#{text.book}">Livre</th>
+                <th class="px-6 py-3 font-medium text-gray-700" th:text="#{text.quantity}">Quantité</th>
+                <th class="px-6 py-3 font-medium text-gray-700" th:text="#{text.price}">Prix</th>
+                <th class="px-6 py-3 font-medium text-gray-700" th:text="#{text.total}">Total</th>
+            </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+            <tr th:each="item : ${cart}">
+                <td class="px-6 py-4" th:text="${item.book.title}">Titre</td>
+                <td class="px-6 py-4" th:text="${item.quantity}">1</td>
+                <td class="px-6 py-4" th:text="${item.book.price} + ' €'">0 €</td>
+                <td class="px-6 py-4" th:text="${item.getTotalPrice()} + ' €'">0 €</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mt-6 text-right">
+        <h3 class="text-xl font-semibold text-gray-700">
+            Total: <span class="text-blue-600" th:text="${total} + ' €'">0 €</span>
+        </h3>
+    </div>
+
+    <div class="mt-8 flex flex-col sm:flex-row sm:justify-between gap-4">
+        <form th:action="@{/cart/checkout}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <button type="submit"
+                    class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-md text-sm font-medium transition">
+                <span th:text="#{text.Validate}">Valider la commande</span>
+            </button>
+        </form>
+
+        <div class="flex gap-4">
+            <a href="/ELibrary/cart/clear"
+               class="text-sm text-red-500 hover:underline font-medium"
+               th:text="#{text.ClearCart}">
+                Vider le panier
+            </a>
+            <a href="/ELibrary/books"
+               class="text-sm text-blue-600 hover:underline font-medium"
+               th:text="#{text.ContinuePurchase}">
+                Continuer vos achats
+            </a>
+        </div>
+    </div>
+</main>
+
 </body>
 </html>
