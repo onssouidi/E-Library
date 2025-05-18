@@ -34,8 +34,8 @@
 </header>
 
 <!-- Main -->
-<main class="max-w-xl mx-auto px-6 py-16 text-center bg-white mt-10 rounded-lg shadow">
-    <h2 class="text-2xl font-semibold text-green-600 mb-6" th:text="${message}">Votre commande a été passée avec succès !</h2>
+<main class="max-w-xl mx-auto px-6 py-16 text-center bg-blue-200 mt-10 rounded-lg shadow">
+    <h2 class="text-2xl font-semibold text-blue-700 mb-6" th:text="${message}">Votre commande a été passée avec succès !</h2>
 
     <p th:if="${total != null}" class="text-lg text-gray-700 mb-8">
         <span th:text="#{order.TotalPayment} + ': '">Total payé : </span>
